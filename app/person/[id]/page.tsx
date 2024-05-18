@@ -47,7 +47,7 @@ export default function Person({ params }: { params: { id: string } }) {
       <Asset>
         <p>Ticker: {asset.ticker}</p>
         <p>
-          {asset.numberOfShares &&
+          {asset.numberOfShares >= 0 &&
             `Shares: ${asset.numberOfShares.toLocaleString()}`}
         </p>
         <p>
