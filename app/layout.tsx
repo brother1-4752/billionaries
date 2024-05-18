@@ -13,7 +13,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body style={{ backgroundColor: "rgb(17,23,26)", color: "whitesmoke" }}>
+      <body
+        style={{
+          backgroundColor: "rgb(17,23,26)",
+          color: "whitesmoke",
+          marginTop: "20px",
+        }}
+      >
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>

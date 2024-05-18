@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -28,12 +29,13 @@ export default function Home() {
         {dataList
           ?.filter((data) => !data.squareImage.includes("undefined"))
           .map((data) => (
-            <Card key={data.id}>
+            <Link className="card" key={data.id} href={`/person/${data.id}`}>
               <Image
                 src={data.squareImage}
                 alt={data.name}
                 width={160}
                 height={160}
+                priority={true}
               />
               <Name>{data.name}</Name>
               <DescriptionWrapper>
@@ -43,7 +45,7 @@ export default function Home() {
                 <span>/</span>
                 <span>{data.industries[0]}</span>
               </DescriptionWrapper>
-            </Card>
+            </Link>
           ))}
       </CardWrapper>
     </Container>
@@ -56,27 +58,30 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-const Card = styled.div`
-  width: 10em;
-  height: 15em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-  transition: all 0.5s;
-
-  &:hover {
-    cursor: pointer;
-    opacity: 0.5;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.9);
-  }
-`;
-
 const CardWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 10em);
-  gap: 10px;
+  gap: 15px;
   place-items: center;
+
+  .card {
+    width: 10em;
+    height: 14em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.5s;
+    text-decoration: none;
+    color: whitesmoke;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.5;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.9);
+      transform: scale(1.05);
+    }
+  }
 `;
 
 const Name = styled.h3`
